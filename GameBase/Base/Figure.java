@@ -2,12 +2,12 @@ package GameBase.Base;
 
 public abstract class Figure {
 
-    protected boolean isOnBoard;  // true = onBoard
-    protected char symbol;
-    protected Coordinate from;
+    protected boolean isOnBoard;  // находиться ли фигура на доске
+    protected char symbol;  // символ фигуры
+    protected Coordinate from;  // координаты, где находиться фигура, "начальные координаты"
 
 
-    public Figure(char symbol, Coordinate from) {
+    public Figure(char symbol, Coordinate from) {     // возвращение всех значений фигуры
         this.isOnBoard = true;
         this.symbol = symbol;
         this.from = from;
@@ -15,6 +15,6 @@ public abstract class Figure {
 
     public void moveTo(Coordinate to) {
         this.from = to;
-    }
+    }  // координаты, куда пойдет фигура
 
 }

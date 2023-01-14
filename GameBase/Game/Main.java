@@ -1,7 +1,9 @@
 package GameBase.Game;
 
 import GameBase.Base.Coordinate;
+import GameBase.Chess.ChessBoard;
 import GameBase.Chess.ChessGame;
+import GameBase.Chess.Figures.King;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -18,7 +20,7 @@ public class Main {
         coor = new Coordinate[2];
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {   // запуск игры
         newGame();
         while (!isEndGame) {
             showMessage();
@@ -27,7 +29,7 @@ public class Main {
         }
     }
 
-    static private void newGame() {
+    static private void newGame() {   // запуск новой игры
         chessGame = ChessGame.getInstance();
         chessGame.newGame();
     }
@@ -41,11 +43,9 @@ public class Main {
         System.out.println("Напишите по образцу: 'A1-A2' или 'A1A2'");
         System.out.println("Счетчик ходов: " + stepCounter);
     }
-
-    static private String readAnswer() {
+    static private String readAnswer() {   // считыватель ответа пользователя
         return (new Scanner(System.in)).nextLine().toLowerCase();
     }
-
     static private void checkAnswer(String st) {                   // читатель ответа пользователя
         if (st.equals("exit")) {
             endGame();
@@ -54,15 +54,14 @@ public class Main {
             showStepMessage(st);
         }
     }
-
     static private void makeStep() {
         chessGame.makeStep(coor);
     }   // ход
-
     static private void endGame() {                               // конец игры
         System.out.println("Спасибо за игру! Пока!!! Пока!!!");
         isEndGame = true;
     }
+
     static public void end_Game(){
         endGame();
     }
@@ -85,9 +84,7 @@ public class Main {
         }
     }
 
-    static private void showStepMessage(String st) {
-        //TODO something
-
+    static private void showStepMessage(String st) {        // сообщение в консоли
         System.out.println((((stepCounter) % 2 == 0) ? "Белые " : "Черные ") + ", вы сходили на: " + st);
         System.out.println("Координаты на поле:" + Arrays.toString(coor));
     }

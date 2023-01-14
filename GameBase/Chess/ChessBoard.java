@@ -33,9 +33,9 @@ public class ChessBoard extends Board {
         for (Movable[] cf : field) Arrays.fill(cf, null);
     }
 
-    public void newField() {
+    public void newField() {     // расстановка шахматных фигур на первоначальные места
         this.resetField();
-        // white
+        // белые
         field[0][0] = new Rook(true, new Coordinate(0, 0));
         field[0][1] = new Knight(true, new Coordinate(1, 0));
         field[0][2] = new Bishop(true, new Coordinate(2, 0));
@@ -46,7 +46,7 @@ public class ChessBoard extends Board {
         field[0][7] = new Rook(true, new Coordinate(7, 0));
         for (int i = 0; i < chessFieldSize; i++)
             field[1][i] = new Pawn(true, new Coordinate(i, 1));
-        //black
+        //черные
         field[7][0] = new Rook(false, new Coordinate(0, 7));
         field[7][1] = new Knight(false, new Coordinate(1, 7));
         field[7][2] = new Bishop(false, new Coordinate(2, 7));
@@ -60,7 +60,7 @@ public class ChessBoard extends Board {
     }
 
     @Override
-    public String toString() {
+    public String toString() {                   //  создание доски, распределение элементов на доске (координаты)
         final StringBuilder sb = new StringBuilder();
         sb.append(" |A|B|C|D|E|F|G|H\n").append("-----------------\n");
         for (int i = 0; i < chessFieldSize; i++) {
@@ -78,40 +78,10 @@ public class ChessBoard extends Board {
     public boolean canMove(Coordinate from, Coordinate to) {
         if (field[from.getY()][from.getX()] == null) return false;
         else {
-            ChessFigure tempFrom = (ChessFigure) field[from.getY()][from.getX()];
-            ChessFigure tempTo = (ChessFigure) field[to.getY()][to.getX()];
-            System.out.println("from = " + from);
-            System.out.println("Ffrom = " + tempFrom);
-
-
-            //TODO
-            //TODO
-
-            //TODO
-
-            //TODO
-
-            //TODO
-
-            //TODO
-
-
-//            boolean checkmate = false;
-//
-//            if ((Main.stepCounter + 1) % 2 == 1 && tempFrom.isColorIsWhite()) {
-//                if (tempTo.getClass().getSimpleName().equals("King")) {
-//                    checkmate = true;
-//                    System.out.println("");
-//                    Main.end_Game();
-//                }
-//            } else if ((Main.stepCounter + 1) % 2 == 0 && !tempFrom.isColorIsWhite()) {
-//                if (tempTo.getClass().getSimpleName().equals("King")) {
-//                    checkmate = true;
-//                    System.out.println("");
-//                    Main.end_Game();
-//                }
-//            }else checkmate=false;
-
+            ChessFigure tempFrom = (ChessFigure) field[from.getY()][from.getX()];   // координаты, откуда идет фигура
+            ChessFigure tempTo = (ChessFigure) field[to.getY()][to.getX()];    // координаты, куда идет фигура
+            System.out.println("откуда = " + from);
+            System.out.println("куда = " + tempFrom);
 
             switch (tempFrom.getClass().getSimpleName()) {
                 case "Bishop":

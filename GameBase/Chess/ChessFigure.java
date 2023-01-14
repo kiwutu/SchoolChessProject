@@ -5,9 +5,9 @@ import GameBase.Base.Figure;
 import GameBase.Base.Movable;
 
 public abstract class ChessFigure extends Figure implements Movable {
-    protected boolean colorIsWhite; // true = white, false = black
+    protected boolean colorIsWhite; // цвет фигуры правда = белые, лож = черные
 
-    public ChessFigure(boolean colorIsWhite, char symbol, Coordinate coordinateFrom) {
+    public ChessFigure(boolean colorIsWhite, char symbol, Coordinate coordinateFrom) {    // присвоение всех значений фигуры
         super(symbol, coordinateFrom);
         this.colorIsWhite = colorIsWhite;
     }
